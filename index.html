@@ -38,47 +38,12 @@
 <body>
 <div id="container"></div>
 <div id="info">
-    <a href="http://learningthreejs.com/blog/2011/12/26/let-s-make-a-3d-game-virtual-joystick/" target="_blank">VirtualJoystick.js</a>
-    A library javascript to provide a virtual joystick on touchscreen.
-    -
-    inspired by this
-    <a href="http://sebleedelisle.com/2011/04/multi-touch-game-controller-in-javascripthtml5-for-ipad/">post</a>
-    from
-    <a href="http://sebleedelisle.com/">seb.ly</a>
-    <br/>
-    Touch the screen and move
-    -
-    works with mouse too as debug
-    <br/>
-    <span id="result"></span>
+    <input id="url" value="ws://192.168.2.102:1880/ws/car" /> <button id="op">连接</button> <span id="state" />
+    <div id="panel" style="display: none">
+        <button id="lock">解锁</button> <span id="direction"></span>
+    </div>
 </div>
 <script src="./js/virtualjoystick.js"></script>
-<script>
-    console.log("touchscreen is", VirtualJoystick.touchScreenAvailable() ? "available" : "not available");
-
-    var joystick	= new VirtualJoystick({
-        container	: document.getElementById('container'),
-        mouseSupport	: true,
-        limitStickTravel: true,
-        stickRadius: 140
-    });
-    joystick.addEventListener('touchStart', function(){
-        console.log('down')
-    })
-    joystick.addEventListener('touchEnd', function(){
-        console.log('up')
-    })
-
-    setInterval(function(){
-        var outputEl	= document.getElementById('result');
-        outputEl.innerHTML	= '<b>Result:</b> '
-            + ' dx:'+joystick.deltaX()
-            + ' dy:'+joystick.deltaY()
-            + (joystick.right()	? ' right'	: '')
-            + (joystick.up()	? ' up'		: '')
-            + (joystick.left()	? ' left'	: '')
-            + (joystick.down()	? ' down' 	: '')
-    }, 1/30 * 1000);
-</script>
+<script src="./index.c.js"></script>
 </body>
 </html>
